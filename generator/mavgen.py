@@ -28,7 +28,7 @@ DEFAULT_VALIDATE = True
 DEFAULT_STRICT_UNITS = False
 
 # List the supported languages. This is done globally because it's used by the GUI wrapper too
-supportedLanguages = ["C", "CS", "JavaScript", "Python", "WLua", "ObjC", "Swift", "Java", "C++11"]
+supportedLanguages = ["C", "CS", "JavaScript", "Python", "WLua", "ObjC", "Swift", "Java", "C++11", "UE4"]
 
 
 def mavgen(opts, args):
@@ -167,6 +167,9 @@ def mavgen(opts, args):
     elif opts.language == 'c++11':
         from . import mavgen_cpp11
         mavgen_cpp11.generate(opts.output, xml)
+    elif opts.language == 'ue4':
+        from . import mavgen_ue4
+        mavgen_ue4.generate(opts.output, xml)
     else:
         print("Unsupported language %s" % opts.language)
 
